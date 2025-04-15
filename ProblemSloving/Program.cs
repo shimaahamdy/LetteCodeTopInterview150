@@ -8,7 +8,7 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
     {
         if ((Pm < m && Pn < n && nums1[Pm].CompareTo(nums2[Pn]) <= 0) || (Pm < m && Pn >= n))
         {
-            nums[pnums] = nums1[Pm];   
+            nums[pnums] = nums1[Pm];
             Pm++;
         }
         else if ((Pm < m && Pn < n && nums1[Pm].CompareTo(nums2[Pn]) > 0) || (Pn < n && Pm >= m))
@@ -21,7 +21,7 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
 
     }
     int i = 0;
-    foreach(int item in nums)
+    foreach (int item in nums)
     {
         nums1[i++] = item;
     }
@@ -30,6 +30,8 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
 }
 
 
+
+//https://leetcode.com/problems/remove-element/
 int RemoveElement(int[] nums, int val)
 {
     List<int> expectednums = new();
@@ -52,6 +54,8 @@ int RemoveElement(int[] nums, int val)
 
 }
 
+
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 int RemoveDuplicates(int[] nums)
 {
     int dublicateIndex = 0;
@@ -71,6 +75,54 @@ int RemoveDuplicates(int[] nums)
     }
     k = originalIndex + 1;
     return k;
+}
+
+
+
+int RemoveDuplicatesV2(int[] nums)
+{
+
+    int orignialIndex = 0, dublicationPointer = 0, dublications = 1;
+    while (dublicationPointer < nums.Length)
+    {
+        //last cell
+        if (dublicationPointer + 1 == nums.Length)
+            checkinkDublications(nums, ref dublications, ref orignialIndex, dublicationPointer);
+
+        //another dublication happend
+        else if (nums[dublicationPointer] == nums[dublicationPointer + 1])
+            dublications++;
+        else checkinkDublications(nums, ref dublications, ref orignialIndex, dublicationPointer);
+
+        dublicationPointer++;
+    }
+
+    return orignialIndex;
+}
+void checkinkDublications(int[] nums, ref int dublications, ref int orignialIndex, int dublicatioPointer)
+{
+    if (dublications >= 2)
+    {
+        nums[orignialIndex] = nums[orignialIndex + 1] = nums[dublicatioPointer];
+        orignialIndex += 2;
+    }
+    else
+    {
+        nums[orignialIndex] = nums[dublicatioPointer];
+        orignialIndex += 1;
+    }
+    dublications = 1;
+
+}
+
+
+
+int MajorityElement(int[] nums)
+{
+  
+    Array.Sort(nums);
+    
+    return nums[nums.Length /2];
 }
 
 
