@@ -78,7 +78,6 @@ int RemoveDuplicates(int[] nums)
 }
 
 
-
 int RemoveDuplicatesV2(int[] nums)
 {
 
@@ -115,14 +114,32 @@ void checkinkDublications(int[] nums, ref int dublications, ref int orignialInde
 
 }
 
-
-
 int MajorityElement(int[] nums)
 {
   
     Array.Sort(nums);
     
     return nums[nums.Length /2];
+}
+
+//189. Rotate Array
+void Rotate(int[] nums, int k)
+{
+    int[] Rotatednums = new int[nums.Length];
+    for (int i = 0; i < nums.Length; i++)
+    {
+        Rotatednums[(i + k) % nums.Length] = nums[i];
+    }
+    Array.Copy(Rotatednums, nums,nums.Length);
+}
+
+//O(1) space solution
+void RotateV2(int[] nums, int k)
+{
+    k %= nums.Length;
+    Array.Reverse(nums);
+    Array.Reverse(nums, 0, k);
+    Array.Reverse(nums, k, nums.Length - k);
 }
 
 
