@@ -28,6 +28,8 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
 
 }
 
+
+//https://leetcode.com/problems/remove-element/
 int RemoveElement(int[] nums, int val)
 {
     List<int> expectednums = new();
@@ -50,6 +52,9 @@ int RemoveElement(int[] nums, int val)
 
 }
 
+
+
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 int RemoveDuplicates(int[] nums)
 {
     int dublicateIndex = 0;
@@ -70,6 +75,7 @@ int RemoveDuplicates(int[] nums)
     k = originalIndex + 1;
     return k;
 }
+
 
 int RemoveDuplicatesV2(int[] nums)
 {
