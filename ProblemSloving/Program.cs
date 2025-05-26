@@ -1,5 +1,4 @@
 ﻿
-// 88 - merged sorted array 
 void Merge(int[] nums1, int m, int[] nums2, int n)
 {
     int Pm = 0, Pn = 0, pnums = 0;
@@ -29,9 +28,6 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
 
 }
 
-
-
-//https://leetcode.com/problems/remove-element/
 int RemoveElement(int[] nums, int val)
 {
     List<int> expectednums = new();
@@ -54,8 +50,6 @@ int RemoveElement(int[] nums, int val)
 
 }
 
-
-//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 int RemoveDuplicates(int[] nums)
 {
     int dublicateIndex = 0;
@@ -77,7 +71,6 @@ int RemoveDuplicates(int[] nums)
     return k;
 }
 
-
 int RemoveDuplicatesV2(int[] nums)
 {
 
@@ -98,6 +91,7 @@ int RemoveDuplicatesV2(int[] nums)
 
     return orignialIndex;
 }
+
 void checkinkDublications(int[] nums, ref int dublications, ref int orignialIndex, int dublicatioPointer)
 {
     if (dublications >= 2)
@@ -116,13 +110,12 @@ void checkinkDublications(int[] nums, ref int dublications, ref int orignialInde
 
 int MajorityElement(int[] nums)
 {
-  
+
     Array.Sort(nums);
-    
-    return nums[nums.Length /2];
+
+    return nums[nums.Length / 2];
 }
 
-//189. Rotate Array
 void Rotate(int[] nums, int k)
 {
     int[] Rotatednums = new int[nums.Length];
@@ -130,7 +123,7 @@ void Rotate(int[] nums, int k)
     {
         Rotatednums[(i + k) % nums.Length] = nums[i];
     }
-    Array.Copy(Rotatednums, nums,nums.Length);
+    Array.Copy(Rotatednums, nums, nums.Length);
 }
 
 //O(1) space solution
@@ -140,6 +133,48 @@ void RotateV2(int[] nums, int k)
     Array.Reverse(nums);
     Array.Reverse(nums, 0, k);
     Array.Reverse(nums, k, nums.Length - k);
+}
+
+int MaxProfit(int[] prices)
+{
+    int minPoint = 0;
+    int maxPoint = 1;
+
+    int maxProfit = 0;
+    while (maxPoint < prices.Length)
+    {
+        if (prices[maxPoint] < prices[minPoint])
+            minPoint = maxPoint;
+        else maxProfit = Math.Max(maxProfit, prices[maxPoint] - prices[minPoint]);
+        maxPoint++;
+    }
+    return maxProfit;
+
+}
+
+int MaxSubArray(int[] nums)
+{
+    int sum = nums[0], max = nums[0];
+    for (int i = 1; i < nums.Length; i++)
+    {
+        sum = Math.Max(sum + nums[i], nums[i]);
+        max = Math.Max(sum, max);
+    }
+    return max;
+
+}
+
+int MaxProfitV2(int[] prices)
+{
+
+    int maxProfit = 0;
+    for (int i = 0, j = 1; j < prices.Length; ++i, ++j)
+    {
+        if (prices[j] - prices[i] > 0)
+            maxProfit += prices[j] - prices[i];
+    }
+    return maxProfit;
+
 }
 
 
