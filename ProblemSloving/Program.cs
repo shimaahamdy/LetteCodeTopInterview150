@@ -28,8 +28,6 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
 
 }
 
-
-//https://leetcode.com/problems/remove-element/
 int RemoveElement(int[] nums, int val)
 {
     List<int> expectednums = new();
@@ -52,9 +50,6 @@ int RemoveElement(int[] nums, int val)
 
 }
 
-
-
-//https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 int RemoveDuplicates(int[] nums)
 {
     int dublicateIndex = 0;
@@ -75,7 +70,6 @@ int RemoveDuplicates(int[] nums)
     k = originalIndex + 1;
     return k;
 }
-
 
 int RemoveDuplicatesV2(int[] nums)
 {
@@ -132,7 +126,6 @@ void Rotate(int[] nums, int k)
     Array.Copy(Rotatednums, nums, nums.Length);
 }
 
-//O(1) space solution
 void RotateV2(int[] nums, int k)
 {
     k %= nums.Length;
@@ -182,6 +175,23 @@ int MaxProfitV2(int[] prices)
     return maxProfit;
 
 }
+
+int HIndex(int[] citations)
+{
+    Array.Sort(citations);
+    int hindex = citations.Length;
+    for (int i = 0; i < citations.Length; i++)
+    {
+        if (citations[i] >= hindex)
+            break;
+
+        hindex--;
+    }
+    return hindex;
+}
+
+HIndex([3, 0, 6, 1, 5]);
+
 
 
 
